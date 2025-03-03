@@ -3,26 +3,76 @@ package org.lessons.java.shop;
 import java.util.Random;
 
 public class Prodotto {
-    public int code;
-    public String name;
-    public String description;
-    public double price;
-    public int iva = 22;
+    private int code;
+    private String name;
+    private String description;
+    private double price;
+    private int iva;
 
-    public Prodotto(String name,String description,double price){
+
+    // costruttori
+    public Prodotto(){
+        this.name = "";
+        this.description = "";
+        this.price = 0;
+        this.iva = 0;
+        this.code = getRandomNumber();
+    }
+
+    public Prodotto(String name,String description,double price, int iva){
         this.name = name;
         this.description = description;
         this.price = price;
         this.code = getRandomNumber();
+        this.iva = iva;
     }
+
+    // getter & setter
 
     public double getPrice(){
-        return this.price + (this.price * (this.iva / 100.0));
+        return this.price;
     }
 
-    public double getBasePrice(){
-        double basePrice = this.price;
-        return basePrice;
+    public void setPrice(int price){
+        this.price = price;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getIva() {
+        return this.iva;
+    }
+
+    public void setIva(int iva) {
+        this.iva = iva;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int GetCode() {
+        return this.code;
+    }
+
+    private void setCode(int code){
+        this.code = code;
+    }
+
+
+    // metodi aggiuntivi
+    public double getPriceIVA(){
+        return this.price + (this.price * (this.iva / 100.0));
     }
 
     private int getRandomNumber(){
